@@ -1,7 +1,7 @@
 package dto;
 
 import common.ParameterHandler;
-import common.Service;
+import common.Business;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class FlowUnit {
     private ParameterHandler inParamHandler;
     private ParameterHandler outParamHandler;
     private Condition condition;
-    private Service service;
+    private Business service;
     public Boolean isContinue;
 
 
@@ -49,7 +49,7 @@ public class FlowUnit {
         try {
             if (this.condition.check()) {
                 Map<String, Object> inParam = inParamHandler.doParam(param);
-                Map<String, Object> tempParam = this.service.doService(context, inParam);
+                Map<String, Object> tempParam = this.service.doBusiness(context, inParam);
                 Map<String, Object> outParam = outParamHandler.doParam(tempParam);
                 result.nextParam = outParam;
             }
