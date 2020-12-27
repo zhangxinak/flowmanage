@@ -14,25 +14,21 @@ import java.util.Map;
  */
 public class Executor {
 
+    public void execute(Map <String, Object> map) {
 
-
-
-    public void execute(Map<String,Object> map){
-
-
-        FlowContext context=buildContext(map);
-        Map<String,Object> param=null;
-        List<FlowUnit> flowUnits=FlowUnit.load();
-        for(int i=0;i<flowUnits.size();i++){
-            FlowUnit unit=flowUnits.get(i);
-            if(i==0){
-                param=buildParam(map);
+        FlowContext context = buildContext(map);
+        Map <String, Object> param = null;
+        List <FlowUnit> flowUnits = FlowUnit.load();
+        for (int i = 0; i < flowUnits.size(); i++) {
+            FlowUnit unit = flowUnits.get(i);
+            if (i == 0) {
+                param = buildParam(map);
             }
-            WorkResult result=unit.work(context,param);
-            if(result.isSucess){
-                param=result.nextParam;
-            }else{
-                if(!unit.isContinue){
+            WorkResult result = unit.work(context, param);
+            if (result.isSucess) {
+                param = result.nextParam;
+            } else {
+                if (!unit.isContinue) {
                     break;
                 }
             }
@@ -40,14 +36,13 @@ public class Executor {
     }
 
 
-
-    FlowContext buildContext(Map<String,Object> param){
-        return null ;
+    FlowContext buildContext(Map <String, Object> param) {
+        return null;
     }
 
 
-    Map<String,Object>  buildParam(Map<String,Object> param){
-        return null ;
+    Map <String, Object> buildParam(Map <String, Object> param) {
+        return null;
     }
 
 
